@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgrespw
+      - PGADMIN_DEFAULT_EMAIL=chris.monney@gmail.com
+      - PGADMIN_DEFAULT_PASSWORD=postgresmaster
+      - POSTGRES_INITDB_ARGS="--data-checksums"
+      - POSTGRES_INITDB_WALDIR=/var/lib/postgresql/data
+    ports:
+      - 30432:5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata:
