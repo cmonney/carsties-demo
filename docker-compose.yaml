@@ -9,8 +9,18 @@ services:
       - POSTGRES_INITDB_ARGS="--data-checksums"
       - POSTGRES_INITDB_WALDIR=/var/lib/postgresql/data
     ports:
-      - 30432:5432
+      - "30432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
+  mongodb:
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=mongopw
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodata:/var/lib/mongodb/data
 volumes:
   pgdata:
+  mongodata:
